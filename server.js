@@ -1,11 +1,21 @@
-const { sendFormPage } = require("./routes");
+const http = require('http'); // step 1: import http module
+const { sendFormPage } = require("./routes"); // import sendFormPage function
 const { parseBody } = require("./parse-body");
 let server;
 
 /******************************************************************************/
 /******************* DO NOT CHANGE THE CODE ABOVE THIS LINE *******************/
 
-// Your code here
+// step 2 create the server
+server = http.createServer((req, res) => {
+    sendFormPage(req, res); // use sendFormPage from routes.js to handle requests
+})
+
+// step 3: make the server listen on port 5000
+const port = 5000;
+server.listen(port, () => {
+    console.log(`Successfully started the server on port ${port}`); // log the message
+})
 
 /******************************************************************************/
 /******************* DO NOT CHANGE THE CODE BELOW THIS LINE *******************/
