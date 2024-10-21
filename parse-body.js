@@ -1,25 +1,28 @@
 function firstStep(input) {
-  // Your code here
+  return input.split('&');
 }
 
 function secondStep(input) {
-  // Your code here
+  return input.map(pair => pair.split('='));
 }
 
 function thirdStep(input) {
-  // Your code here
+  return input.map(([key, value]) => [key, value.replace(/\+/g, ' ')]);
 }
 
 function fourthStep(input) {
-  // Your code here
+  return input.map(([key, value]) => [key, decodeURIComponent(value)]);
 }
 
 function fifthStep(input) {
-  // Your code here
+  return input.reduce((acc, [key, value]) => {
+    acc[key] = value;
+    return acc;
+  }, {});
 }
 
 function parseBody(str) {
-  // Your code here
+  return fifthStep(fourthStep(thirdStep(secondStep(firstStep(str)))));
 }
 
 /******************************************************************************/
