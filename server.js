@@ -8,6 +8,9 @@ let server;
 
 // step 2 create the server
 server = http.createServer((req, res) => {
+    // log the method and the URL of the incoming request
+    console.log(`${req.method} ${req.url}`);
+
     sendFormPage(req, res); // use sendFormPage from routes.js to handle requests
 })
 
